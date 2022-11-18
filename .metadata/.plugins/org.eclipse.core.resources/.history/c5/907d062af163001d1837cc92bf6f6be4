@@ -1,0 +1,45 @@
+package com.tcs.client;
+
+import java.util.Scanner;
+import com.tcs.service.*;
+
+public class CRSApplication {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		Scanner sc = new Scanner(System.in);
+		int ch;
+		ch=sc.nextInt();
+		
+		do {
+			System.out.println("<------MAIN MENU----->");
+			System.out.println("1.LOGIN");
+			System.out.println("2.Student Registration");
+			System.out.println("3.Update Passwrod");
+			System.out.println("Exit");
+			
+			switch(ch){
+			case 1:	System.out.println("<-----LOGIN----->");
+					System.out.println("Enter USerNAme");
+					String uName = sc.nextLine();
+					System.out.println("Enter Password");
+					String uPass = sc.nextLine();
+					if(uName=="vincy" && uPass=="1234") {
+						System.out.println("WELCOME");
+						
+					}else {System.out.println("Enter correct details");
+					}break;
+			case 2:	System.out.println("Welcome to Student Registration");
+					public 
+					
+			
+			
+			}
+		}while(ch!=0);
+		
+		
+
+	}
+
+}

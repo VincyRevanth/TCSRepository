@@ -1,0 +1,91 @@
+package com.tcs.bean;
+
+public class Course {
+	private int courseID;
+	private String Grade;
+	public String getGrade() {
+		return Grade;
+	}
+	public void setGrade(String grade) {
+		Grade = grade;
+	}
+	private int studentID;
+	private String Department;
+	public String getDepartment() {
+		return Department;
+	}
+	public void setDepartment(String department) {
+		Department = department;
+	}
+	private String professor;
+	private String Prerequisites;
+	public String getPrerequisites() {
+		return Prerequisites;
+	}
+	public void setPrerequisites(String prerequisites) {
+		Prerequisites = prerequisites;
+	}
+	public String getProfessor() {
+		return professor;
+	}
+	public void setProfessor(String professor) {
+		this.professor = professor;
+	}
+	//private String courseName;
+	public int getStudentID() {
+		return studentID;
+	}
+	public void setStudentID(int studentID) {
+		this.studentID = studentID;
+	}
+	private String professorName;
+	public String getProfessorName() {
+		return professorName;
+	}
+	public void setProfessorName(String professorName) {
+		this.professorName = professorName;
+	}
+	public String getCourseDetails() {
+		return courseDetails;
+	}
+	public void setCourseDetails(String courseDetails) {
+		this.courseDetails = courseDetails;
+	}
+	private String courseDetails;
+	public int getCourseID() {
+		return courseID;
+	}
+	public void setCourseID(int courseID) {
+		this.courseID = courseID;
+	}
+	public String getCourseName() {
+		return courseName;
+	}
+	public void setCourseName(String string) {
+		this.courseName = string;
+	}
+	private String courseName;
+	private int CourseId2;
+	public int getCourseId2() {
+		return CourseId2;
+	}
+	public void setCourseId2(int courseId2) {
+		CourseId2 = courseId2;
+	}
+	public int getCourseId3() {
+		return CourseId3;
+	}
+	public void setCourseId3(int courseId3) {
+		CourseId3 = courseId3;
+	}
+	public int getCourseId4() {
+		return CourseId4;
+	}
+	public void setCourseId4(int courseId4) {
+		CourseId4 = courseId4;
+	}
+	private int CourseId3;
+	private int CourseId4;
+	
+
+}

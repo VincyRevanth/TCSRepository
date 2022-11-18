@@ -1,0 +1,277 @@
+/**
+ * 
+ */
+package com.tcs.service;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.util.*;
+import com.tcs.bean.Course;
+
+/**
+ * @author Administrator
+ *
+ */
+public class StudentServiceImpl implements StudentServiceInterface{
+	static List<Course> clist=new ArrayList<Course>();
+
+	Scanner sc=new Scanner(System.in);
+	
+	@Override
+	public void courseRegister() {
+		// TODO Auto-generated method stub
+		try {
+		AdminServiceImpl.cclist.forEach(System.out::println);
+
+		Course stucourse=new Course();
+		System.out.println("Enter student id");
+		int sid=sc.nextInt();
+		boolean found=false;
+		for(int i=0;i<clist.size();i++)
+		{
+			if(clist.get(i).getStudentID()==sid)
+			{
+				found=true;
+				System.out.println("You already registered courses");
+			}
+		}
+		if(found==false)
+		{      
+				stucourse.setStudentID(sid);sc.nextLine();
+				System.out.println("Enter course id1");
+				stucourse.setCourseID(sc.nextInt());sc.nextLine();
+				System.out.println("Enter course id2");
+				stucourse.setCourseId2(sc.nextInt());sc.nextLine();
+				System.out.println("Enter course id3");
+				stucourse.setCourseId3(sc.nextInt());sc.nextLine();
+				System.out.println("Enter course id4");
+				stucourse.setCourseId4(sc.nextInt());sc.nextLine();
+				clist.add(stucourse);
+				System.out.println("Courses Registration Successfull!");
+		  
+		}
+		}
+		catch(Exception e)
+		{
+			System.out.println("Enter correct input");
+		}
+			}
+		
+		
+		
+			
+		
+
+	@Override
+	public void addCourse() {
+		// TODO Auto-generated method stub
+		try {
+		LocalDate localDate=LocalDate.now();
+		LocalTime localTime=LocalTime.now();
+		LocalDateTime localDateTime=LocalDateTime.now();
+		LocalDate startdate=LocalDate.of(2022, 11, 11);
+		LocalDate enddate=LocalDate.of(2022, 11, 14);
+		if(localDate.compareTo(startdate) >= 0 && localDate.compareTo(enddate)<=0)
+		{
+			System.out.println("Enter your student id");
+			int id=sc.nextInt();sc.nextLine();
+			if(clist.size()<=0)
+			{
+				System.out.println("You didn't registered any courses yet");
+			}
+			for(int i=0;i<clist.size();i++)
+			{
+				if(clist.get(i).getStudentID()==id)
+				{
+				if(clist.get(i).getCourseID()==0)
+				{
+					System.out.println("Enter course Id to add");
+					clist.get(i).setCourseID(sc.nextInt());
+				}
+				else if(clist.get(i).getCourseId2()==0)
+				{
+					System.out.println("Enter course Id to add");
+					clist.get(i).setCourseId2(sc.nextInt());
+					}
+				else if(clist.get(i).getCourseId3()==0)
+				{
+					System.out.println("Enter course Id to add");
+					clist.get(i).setCourseId3(sc.nextInt());
+					}
+				else if(clist.get(i).getCourseId4()==0)
+				{
+					System.out.println("Enter course Id to add");
+					clist.get(i).setCourseId4(sc.nextInt());					
+				}
+				else
+				{
+					System.out.println("You have already registered 4 courses.To add a new course,remove one course from already registered courses.");				
+					}
+			    }
+			
+			
+		 }
+		}
+		else
+		{
+			System.out.println("You cannot add course now. From"+startdate+" "+"you can add courses");
+		}
+		}
+		catch(Exception e)
+		{
+			System.out.println("Enter correct input");
+		}
+		
+	}
+
+	@Override
+	public void dropCourse() {
+		// TODO Auto-generated method stub
+		try {
+		LocalDate localDate=LocalDate.now();
+		LocalTime localTime=LocalTime.now();
+		LocalDateTime localDateTime=LocalDateTime.now();
+		LocalDate dstartdate=LocalDate.of(2022, 11, 11);
+		LocalDate denddate=LocalDate.of(2022, 11, 14);
+		boolean found1=false;
+		if(localDate.compareTo(dstartdate) >= 0 && localDate.compareTo(denddate)<=0)
+		{
+			System.out.println("Enter your student id");
+			int id=sc.nextInt();sc.nextLine();
+			for(int i=0;i<clist.size();i++)
+			{
+				if(clist.get(i).getStudentID()==id)
+				{
+					found1=true;
+				}
+			}
+			
+			if(found1==true)
+			{
+				System.out.println("Enter course id you want to drop");
+			    int dcourse=sc.nextInt();sc.nextLine();	
+			    for(int i=0;i<clist.size();i++)
+			    {
+			    	if(clist.get(i).getStudentID()==id)
+			    	{
+			    		if(clist.get(i).getCourseID()==dcourse)
+			    		{
+			    			clist.get(i).setCourseID(0);
+							System.out.println("Course dropped");
+
+			    		}
+			    		else if(clist.get(i).getCourseId2()==dcourse)
+			    		{
+			    			clist.get(i).setCourseId2(0);
+							System.out.println("Course dropped");
+
+			    		}
+			    		else if(clist.get(i).getCourseId3()==dcourse)
+			    		{
+			    			clist.get(i).setCourseId3(0);
+							System.out.println("Course dropped");
+
+			    		}
+			    		else if(clist.get(i).getCourseId4()==dcourse)
+			    		{
+			    			clist.get(i).setCourseId4(0);
+							System.out.println("Course dropped");
+
+			    		}
+			    		else
+			    		{
+			    			System.out.println("Course Id not found");
+			    		}
+			    		
+			    		
+			    	}
+			    	
+			    	
+			    }
+				
+				
+			}
+			else
+			{
+				System.out.println("Student not yet registered for any course");
+			}
+				
+		
+	    }
+		else
+		{
+			System.out.println("You cannot remove course now. From" +dstartdate+" "+"you can remove courses");
+		}
+		}
+		catch(Exception e)
+		{
+			System.out.println("Enter correct input");
+		}
+	}
+
+	@Override
+	public void viewReportCard() {
+		// TODO Auto-generated method stub
+		try
+		{
+		int count=0;
+		System.out.println("Enter Student Id");
+		int sid=sc.nextInt();
+		
+		System.out.println("Course ID         Grade");
+
+		for(int i=0;i< ProfessorServiceImpl.grade.size();i++)
+		{
+			if(ProfessorServiceImpl.grade.get(i).getStuId()==sid)
+			{     count++;
+			      
+				System.out.println(ProfessorServiceImpl.grade.get(i).getCourseID()+"     "+ProfessorServiceImp.grade.get(i).getGrade());
+			}
+		}
+		
+		if(count<=0)
+		{
+			System.out.println("Student ID not found");
+		}
+		else
+		{
+		System.out.println("---------------------------------------");
+		
+		}
+		}
+		catch(Exception e)
+		{
+			System.out.println("Enter correct input");
+		}
+		
+		
+	}
+
+	@Override
+	public void payment() {
+		// TODO Auto-generated method stub
+		
+		
+		
+		
+		
+		
+	}
+
+	@Override
+	public void viewCourses() {
+		// TODO Auto-generated method stub
+		System.out.println("All courses list from course Catalogue");
+		AdminServiceImpl.cclist.forEach(System.out::println);
+		System.out.println("student and courses registration details");
+		clist.forEach(System.out::println);
+		
+		
+	}
+
+	
+
+}

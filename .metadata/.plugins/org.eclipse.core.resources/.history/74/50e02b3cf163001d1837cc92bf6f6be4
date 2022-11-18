@@ -1,0 +1,48 @@
+package com.tcs.service;
+
+import java.util.ArrayList;
+import java.util.Scanner;
+import com.tcs.bean.*;
+
+public class ProfessorServiceImpl implements ProfessorServiceInterface {
+	public static Object grade;
+	
+
+	@Override
+	public void professorRegistration() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void course() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void viewReport() {
+		// TODO Auto-generated method stub
+		
+		
+
+	@Override
+	public void addReport() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void myCouorse() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void viewEnrolledStudent() {
+		// TODO Auto-generated method stub
+		
+	}
+	
+
+}

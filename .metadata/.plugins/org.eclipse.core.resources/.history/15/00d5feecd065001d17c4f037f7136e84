@@ -1,0 +1,27 @@
+package com.tcs.bean;
+
+public class Payment {
+	private int amount;
+	public int getAmount() {
+		return amount;
+	}
+	public void setAmount(int amount) {
+		this.amount = amount;
+	}
+	public String getPaymentdata() {
+		return paymentdata;
+	}
+	public void setPaymentdata(String paymentdata) {
+		this.paymentdata = paymentdata;
+	}
+	public int getPaymentid() {
+		return paymentid;
+	}
+	public void setPaymentid(int paymentid) {
+		this.paymentid = paymentid;
+	}
+	private String paymentdata;
+	private int paymentid;
+	
+
+}

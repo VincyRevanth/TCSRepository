@@ -1,0 +1,27 @@
+package com.tcs.bean;
+
+public class Admin {
+	private String AdminName;
+	public String getAdminName() {
+		return AdminName;
+	}
+	public void setAdminName(String adminName) {
+		AdminName = adminName;
+	}
+	private String Adminpswd;
+	public String getAdminpswd() {
+		return Adminpswd;
+	}
+	public void setAdminpswd(String Adminpswd) {
+		this.Adminpswd = Adminpswd;
+	}
+	private int AdminID;
+	public int getAdminID() {
+		return AdminID;
+	}
+	public void setAdminID(int adminID) {
+		AdminID = adminID;
+	}
+	
+
+}

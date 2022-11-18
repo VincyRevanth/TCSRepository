@@ -1,0 +1,13 @@
+package com.tcs.service;
+
+public interface ProfessorServiceInterface {
+	public void professorRegistration();
+	public void course();
+	public void viewReport();
+	public void addReport();
+	public void myCouorse();
+	public void viewEnrolledStudent();
+	
+	
+
+}

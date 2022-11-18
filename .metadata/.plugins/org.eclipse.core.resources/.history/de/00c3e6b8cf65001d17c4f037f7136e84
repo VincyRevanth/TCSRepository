@@ -1,0 +1,252 @@
+/**
+ * 
+ */
+package com.tcs.service;
+
+
+import com.tcs.bean.*;
+import java.util.*;
+import com.tcs.service.UserServiceImpl;
+import com.tcs.service.UserServiceInterface;
+
+/**
+ * @author Administrator
+ *
+ */
+public class AdminServiceImpl implements AdminServiceInterface{
+	UserServiceImpl usimp=new UserServiceImpl();
+	static List<Course> cclist=new ArrayList<Course>();
+	
+
+
+	 Scanner sc=new Scanner(System.in);
+	 
+	 
+	@Override
+	public void approveStudentRegistration() {
+		// TODO Auto-generated method stub
+		try {
+		boolean found=false;
+        if(UserServiceImpl.asr.size()>0)
+        {
+        	UserServiceImpl.asr.forEach(System.out::println);
+        	
+        	System.out.println("Enter Student id");
+        	int sid=sc.nextInt();sc.nextLine();
+        	for(int i=0;i<UserServiceImpl.slist.size();i++)
+        	{
+        		if(UserServiceImpl.slist.get(i).getStudentID()==sid)
+        		{
+        		UserServiceImpl.slist.get(i).setStatus(1);
+        		System.out.println("Student Approved");
+        		found=true;
+        		}
+        	}
+        	if(found==true)
+        	{
+        	for(int i=0;i<UserServiceImpl.asr.size();i++)
+        	{
+        		if(UserServiceImpl.asr.get(i).getStudentId()==sid)
+        		{
+        			UserServiceImpl.asr.remove(i);
+        		}
+        	}
+        	}
+        }
+        else
+        {
+        	System.out.println("No Registrations to approve");
+        }
+		}
+        catch(Exception e)
+		{
+			System.out.println("Enter correct input");
+		}
+		
+	}
+
+	@Override
+	public void addCourse() {
+		// TODO Auto-generated method stub
+		try {
+        Course course=new Course();
+		
+		System.out.println("Enter Course ID");
+	    course.setCourseID(sc.nextInt());
+	    sc.nextLine();
+	    System.out.println("Enter Course Name");
+	    course.setCourseName(sc.nextLine());
+	    System.out.println("Enter Professor Name");
+	    course.setProfessor(sc.nextLine());
+	    System.out.println("Enter Department");
+	    course.setDepartment(sc.nextLine());
+	    System.out.println("Enter Prerequisites");
+	    course.setPrerequisites(sc.nextLine());
+	  	cclist.add(course);
+		}
+		catch(Exception e)
+		{
+			System.out.println("Enter correct input");
+		}
+		
+	}
+
+	@Override
+	public void removeCourse() {
+		// TODO Auto-generated method stub
+		try {
+		
+		System.out.println("Enter Course ID");
+		int inp=sc.nextInt();
+		boolean found=false;
+
+		for(int i=0;i<cclist.size();i++)
+		{
+			if(cclist.get(i).getCourseID()==inp)
+			{
+				found=true;
+				cclist.remove(i);
+
+			}
+			
+		}
+       if(found==false)
+       {
+    	   System.out.println("Course ID not found");
+       }
+		}
+		catch(Exception e)
+		{
+			System.out.println("Enter correct input");
+		}
+		
+	}
+
+	@Override
+	public void generateReportCard() {
+		// TODO Auto-generated method stub
+		try
+		{
+		int count=0;
+		System.out.println("Enter Student Id");
+		int sid=sc.nextInt();
+		int gA=0,gB=0,gC=0,gD=0,gF=0;
+		int courseId;
+		String stuGrade;
+		String result;
+		System.out.println("Report Card");
+		System.out.println("Course ID         Grade");
+
+		for(int i=0;i< ((List<Course>) ProfessorServiceImpl.grade).size();i++)
+		{
+			if(((List<Course>) ProfessorServiceImpl.grade).get(i).getStudentID()==sid)
+			{    count++;
+			      courseId=((List<Course>) ProfessorServiceImpl.grade).get(i).getCourseID();
+			      stuGrade=((List<Course>) ProfessorServiceImpl.grade).get(i).getGrade();
+			      if(stuGrade.equalsIgnoreCase("A"))
+					{
+						gA=gA+1;
+					}
+			      else if(stuGrade.equalsIgnoreCase("B"))
+			      {
+			    	  gB=gB+1;
+			      }
+			      else if(stuGrade.equalsIgnoreCase("C"))
+			      {
+			    	 gC=gC+1;
+			      }
+			      else if(stuGrade.equalsIgnoreCase("D"))
+			      {
+			    	  gD=gD+1;
+			      }
+			      else
+			      {
+			    	  gF=gF+1;
+			      }
+			      
+				System.out.println(courseId+"     "+stuGrade);
+			}
+		}
+		System.out.println("---------------------------------------");
+		if(gF>=1)
+		{
+			System.out.println("Result    *****  Failed  *****");
+		}
+		else if(gA>3)
+		{
+			System.out.println("Result    ***** Distinction with 80% *****");
+		}
+		else if(gB>3)
+		{
+			System.out.println("Result    ***** Pass with 70% *****");
+		}
+		else if(gC>3)
+		{
+			System.out.println("Result    ***** Pass with 60% *****");
+		}
+		else
+		{
+			System.out.println("Result    ***** Pass with 55% *****");
+
+		}
+		
+		
+		if(count<=0)
+		{
+			System.out.println("Student ID not found");
+		}
+		}
+		catch(Exception e)
+		{
+			System.out.println("Enter correct input");
+		}
+	}
+
+	@Override
+	public void addProfessor() {
+		// TODO Auto-generated method stub
+		try {
+		Professor pro=new Professor();
+		
+		System.out.println("Enter Professor Id");
+	    pro.setProfessorID(sc.nextInt());
+	    sc.nextLine();
+	    System.out.println("Enter Professor Name");
+	    pro.setProfessorName(sc.nextLine());
+	    System.out.println("Enter Department");
+	    pro.setDepartment(sc.nextLine());
+	    System.out.println("Enter No of courses offered by the professor");
+	    pro.setNoOfCoursesOffered(sc.nextInt());
+	    sc.nextLine();
+	    System.out.println("Enter Professor Password");
+	    pro.setProfessorPassword(sc.nextLine());
+	    UserServiceImpl.plist.add(pro);
+		}
+		catch(Exception e)
+		{
+			System.out.println("Enter correct input");
+		}
+	}
+ 
+	 
+	
+	  
+	@Override
+	public void listProfessor() {
+		// TODO Auto-generated method stub
+		
+		System.out.println("----Professors List-----");
+		UserServiceImpl.plist.forEach(System.out::println);
+		
+	}
+	
+	public void listCourses() {
+		// TODO Auto-generated method stub
+		
+		System.out.println("----Courses List-----");
+		cclist.forEach(System.out::println);
+		
+	}
+
+	
+}
